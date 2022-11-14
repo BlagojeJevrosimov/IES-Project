@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- CIM Project xml -->
+<cim_project>
+	<name>Project 3</name>
+	<profile_source>Project3Profile.legacy-rdfs</profile_source>
+</cim_project>

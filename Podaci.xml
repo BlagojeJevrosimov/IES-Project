@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF	xmlns:md="http://iec.ch/2010/schema/CIM_model_description#"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cim="http://iec.ch/TC57/2009/CIM-schema-cim14#"
+	xmlns:bcex="http://www.bchydro.com/CIM14/2010/extension#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <cim:PowerTransformer rdf:ID="PT1">
+		<cim:PowerTransformer.vectorGroup>Grupa1</cim:PowerTransformer.vectorGroup>
+		<cim:Equipment.aggregate>true</cim:Equipment.aggregate>
+		<cim:Equipment.normallyInService>true</cim:Equipment.normallyInService>
+		<cim:IdentifiedObject.aliasName>Transfa1</cim:IdentifiedObject.aliasName>
+		<cim:IdentifiedObject.mRID>T1</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.name>Transformer1</cim:IdentifiedObject.name>
+	</cim:PowerTransformer>
+	<cim:Terminal rdf:ID="T1">
+		<cim:Terminal.ConductingEquipment rdf:resource="PT1"/>
+		<cim:Terminal.connected>true</cim:Terminal.connected>
+		<cim:Terminal.phases>ABC</cim:Terminal.phases>
+		<cim:Terminal.sequenceNumber>5</cim:Terminal.sequenceNumber>
+		<cim:IdentifiedObject.aliasName>Terma1</cim:IdentifiedObject.aliasName>
+		<cim:IdentifiedObject.mRID>T1</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.name>Terminal1</cim:IdentifiedObject.name>
+	</cim:Terminal>
+	<cim:PowerTransformerEnd rdf:ID="PTE1">
+		<cim:PowerTransformerEnd.b>0.2</cim:PowerTransformerEnd.b>
+		<cim:PowerTransformerEnd.b0>0.3</cim:PowerTransformerEnd.b0>
+		<cim:PowerTransformerEnd.connectionKind>D</cim:PowerTransformerEnd.connectionKind>
+		<cim:PowerTransformerEnd.g>0.4</cim:PowerTransformerEnd.g>
+		<cim:PowerTransformerEnd.g0>0.5</cim:PowerTransformerEnd.g0>
+		<cim:PowerTransformerEnd.phaseAngleClock>45</cim:PowerTransformerEnd.phaseAngleClock>
+		<cim:PowerTransformerEnd.PowerTransformer rdf:resource="PT1"/>
+		<cim:PowerTransformerEnd.r>0.78</cim:PowerTransformerEnd.r>
+		<cim:PowerTransformerEnd.r0>0.98</cim:PowerTransformerEnd.r0>
+		<cim:PowerTransformerEnd.ratedS>72.4</cim:PowerTransformerEnd.ratedS>
+		<cim:PowerTransformerEnd.ratedU>39.4</cim:PowerTransformerEnd.ratedU>
+		<cim:PowerTransformerEnd.x>0.42</cim:PowerTransformerEnd.x>
+		<cim:PowerTransformerEnd.x0>0.56</cim:PowerTransformerEnd.x0>
+		<cim:TransformerEnd.RatioTapChanger rdf:resource="RTC1"/>
+		<cim:TransformerEnd.Terminal rdf:resource="T1"/>
+		<cim:IdentifiedObject.aliasName>PTEnd1</cim:IdentifiedObject.aliasName>
+		<cim:IdentifiedObject.mRID>PTE1</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.name>PowerPransformerE1</cim:IdentifiedObject.name>
+	</cim:PowerTransformerEnd>
+	<cim:RatioTapChanger rdf:ID="RTP1">
+		<cim:RatioTapChanger.stepVoltageIncrement>70</cim:RatioTapChanger.stepVoltageIncrement>
+		<cim:RatioTapChanger.tculControlMode>volt</cim:RatioTapChanger.tculControlMode>
+		<cim:RatioTapChanger.TransformerEnd rdf:resource="PTE1"/>
+		<cim:TapChanger.highStep>4</cim:TapChanger.highStep>
+		<cim:TapChanger.initialDelay>5</cim:TapChanger.initialDelay>
+		<cim:TapChanger.lowStep>2</cim:TapChanger.lowStep>
+		<cim:TapChanger.ltcFlag>false</cim:TapChanger.ltcFlag>
+		<cim:TapChanger.neutralStep>1</cim:TapChanger.neutralStep>
+		<cim:TapChanger.neutralU>100</cim:TapChanger.neutralU>
+		<cim:TapChanger.normalStep>2</cim:TapChanger.normalStep>
+		<cim:TapChanger.regulationStatus>true</cim:TapChanger.regulationStatus>
+		<cim:TapChanger.subsequentDelay>1.3</cim:TapChanger.subsequentDelay>
+		<cim:IdentifiedObject.aliasName>RadioTapic</cim:IdentifiedObject.aliasName>
+		<cim:IdentifiedObject.mRID>RTP1</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.name>RadioTapC1</cim:IdentifiedObject.name>
+	</cim:RatioTapChanger>
+</rdf:RDF>

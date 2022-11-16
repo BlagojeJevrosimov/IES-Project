@@ -1,6 +1,8 @@
-using FTN.Common;
+﻿using FTN.Common;
 using FTN.Services.NetworkModelService.DataModel.Core;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Channels;
 
 namespace FTN.Services.NetworkModelService.DataModel.Wires
 {
@@ -82,7 +84,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.g = value;
             }
         }
-        public virtual float G0
+        public  float G0
         {
             get
             {
@@ -93,7 +95,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.g0 = value;
             }
         }
-        public virtual int PhaseAngleClock
+        public  int PhaseAngleClock
         {
             get
             {
@@ -105,7 +107,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             }
         }
 
-        public virtual long PowerTransformer
+        public  long PowerTransformer
         {
             get
             {
@@ -116,7 +118,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.powerTransformer = value;
             }
         }
-        public virtual float R
+        public  float R
         {
             get
             {
@@ -127,7 +129,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.r = value;
             }
         }
-        public virtual float R0
+        public  float R0
         {
             get
             {
@@ -138,7 +140,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.r0 = value;
             }
         }
-        public virtual float RatedS
+        public  float RatedS
         {
             get
             {
@@ -149,7 +151,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.ratedS = value;
             }
         }
-        public virtual float RatedU
+        public  float RatedU
         {
             get
             {
@@ -160,7 +162,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.ratedU = value;
             }
         }
-        public virtual float X
+        public  float X
         {
             get
             {
@@ -171,7 +173,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.x = value;
             }
         }
-        public virtual float X0
+        public  float X0
         {
             get
             {
@@ -324,7 +326,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                     r0 = property.AsFloat();
                     break;
                 case ModelCode.POWER_TRANSFORMER_END_RATEDS:
-                    ratedS = property.AsLong();
+                    ratedS = property.AsFloat();
                     break;
                 case ModelCode.POWER_TRANSFORMER_END_RATEDU:
                     ratedU = property.AsFloat();
@@ -343,9 +345,9 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
         }
         public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
         {
-            if(refType == TypeOfReference.Reference || refType == TypeOfReference.Both)
+            if (refType == TypeOfReference.Reference || refType == TypeOfReference.Both)
             {
-                if(powerTransformer != 0)
+                if (powerTransformer != 0)
                 {
                     references[ModelCode.POWER_TRANSFORMER_END_POWER_TRANSFORMER] = new List<long>();
                     references[ModelCode.POWER_TRANSFORMER_END_POWER_TRANSFORMER].Add(powerTransformer);

@@ -1,11 +1,12 @@
-using FTN.Common;
+﻿using FTN.Common;
 using FTN.Services.NetworkModelService.DataModel.Core;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Channels;
 
 namespace FTN.Services.NetworkModelService.DataModel.Wires
-{     
+{
     public class TransformerEnd : IdentifiedObject
-    { 
+    {
 
         private long ratioTapChanger = 0;
 
@@ -15,19 +16,25 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
         {
         }
 
-        public long RatioTapChanger {
-            get {
+        public long RatioTapChanger
+        {
+            get
+            {
                 return this.ratioTapChanger;
             }
-            set {
+            set
+            {
                 this.ratioTapChanger = value;
             }
         }
-        public long Terminal {
-            get {
+        public long Terminal
+        {
+            get
+            {
                 return this.terminal;
             }
-            set {
+            set
+            {
                 this.terminal = value;
             }
         }
@@ -89,23 +96,26 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                     terminal = property.AsReference();
                     break;
 
-                case ModelCode.TRANSFORMER_END_RADIO_TAP_CHARGER:
-                    ratioTapChanger = property.AsReference();
-                    break;
-
                 default:
                     base.SetProperty(property);
                     break;
             }
         }
+        public override bool IsReferenced
+        {
+            get
+            {
+                return ratioTapChanger != 0 || base.IsReferenced;
+            }
+        }
         public override void GetReferences(Dictionary<ModelCode, List<long>> references, TypeOfReference refType)
         {
-            if(refType == TypeOfReference.Reference || refType == TypeOfReference.Both)
+            if (refType == TypeOfReference.Reference || refType == TypeOfReference.Both)
             {
-                if(terminal != 0)
+                if (terminal != 0)
                 {
                     references[ModelCode.TRANSFORMER_END_TERMINAL] = new List<long>();
-                    references[ModelCode.TRANSFORMER_END_TERMINAL].Add(terminal); 
+                    references[ModelCode.TRANSFORMER_END_TERMINAL].Add(terminal);
                 }
                 if (ratioTapChanger != 0)
                 {
@@ -114,6 +124,42 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 }
             }
             base.GetReferences(references, refType);
+        }
+        public override void AddReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.RATIO_TAP_CHANGER_TRANSFORMER_END:
+                    ratioTapChanger = globalId;
+                    break;
+
+                default:
+                    base.AddReference(referenceId, globalId);
+                    break;
+            }
+
+        }
+        public override void RemoveReference(ModelCode referenceId, long globalId)
+        {
+            switch (referenceId)
+            {
+                case ModelCode.TRANSFORMER_END_RADIO_TAP_CHARGER:
+
+                    if (ratioTapChanger == GlobalId)
+                    {
+                        ratioTapChanger = 0;
+                    }
+                    else
+                    {
+                        CommonTrace.WriteTrace(CommonTrace.TraceWarning, "Entity (GID = 0x{0:x16}) doesn't contain reference 0x{1:x16}.", this.GlobalId, globalId);
+                    }
+
+                    break;
+
+                default:
+                    base.RemoveReference(referenceId, globalId);
+                    break;
+            }
         }
     }
 }

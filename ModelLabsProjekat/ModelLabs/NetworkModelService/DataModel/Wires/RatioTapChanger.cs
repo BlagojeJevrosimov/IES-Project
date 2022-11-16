@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.IO.Pipes;
-using System.Security.Cryptography;
-using FTN.Common;
+﻿using FTN.Common;
 using FTN.Services.NetworkModelService.DataModel.Core;
+using System.Collections.Generic;
 
 namespace FTN.Services.NetworkModelService.DataModel.Wires
 {
-    public class RatioTapChanger : TapChanger {
-        
+    public class RatioTapChanger : TapChanger
+    {
+
         private float stepVoltageIncrement;
 
         private TransformerControlMode tculControlMode;
@@ -19,28 +17,37 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
         {
         }
 
-        public virtual float StepVoltageIncrement {
-            get {
+        public virtual float StepVoltageIncrement
+        {
+            get
+            {
                 return this.stepVoltageIncrement;
             }
-            set {
+            set
+            {
                 this.stepVoltageIncrement = value;
             }
         }
-       
-        public virtual TransformerControlMode TculControlMode {
-            get {
+
+        public virtual TransformerControlMode TculControlMode
+        {
+            get
+            {
                 return this.tculControlMode;
             }
-            set {
+            set
+            {
                 this.tculControlMode = value;
             }
         }
-        public virtual long TransformerEnd {
-            get {
+        public virtual long TransformerEnd
+        {
+            get
+            {
                 return this.transformerEnd;
             }
-            set {
+            set
+            {
                 this.transformerEnd = value;
             }
         }
@@ -104,7 +111,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             switch (property.Id)
             {
                 case ModelCode.RATIO_TAP_CHANGER_STEP_VOLTAGE_INCREMENT:
-                    stepVoltageIncrement= property.AsFloat();
+                    stepVoltageIncrement = property.AsFloat();
                     break;
 
                 case ModelCode.RATIO_TAP_CHANGER_TCUL_CONTROL_MODE:

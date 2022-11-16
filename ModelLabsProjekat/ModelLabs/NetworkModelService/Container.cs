@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Xml;
-using FTN.Common;
+﻿using FTN.Common;
 using FTN.Services.NetworkModelService.DataModel.Core;
 using FTN.Services.NetworkModelService.DataModel.Wires;
-using FTN.Services.NetworkModelService.DataModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace FTN.Services.NetworkModelService
-{		
+{
 	public class Container
 	{
 		/// <summary>
 		/// The dictionary of entities. Key = GlobaId, Value = Entity
 		/// </summary>		
-		private Dictionary<long, IdentifiedObject> entities = new Dictionary<long, IdentifiedObject>();	
+		private Dictionary<long, IdentifiedObject> entities = new Dictionary<long, IdentifiedObject>();
 
 		/// <summary>
 		/// Initializes a new instance of the Container class
@@ -51,10 +44,10 @@ namespace FTN.Services.NetworkModelService
 		/// </summary>		
 		public bool IsEmpty
 		{
-			get { return entities.Count == 0; }			
+			get { return entities.Count == 0; }
 		}
-			
-		# region operators
+
+		#region operators
 
 		public static bool operator ==(Container x, Container y)
 		{
@@ -89,7 +82,7 @@ namespace FTN.Services.NetworkModelService
 					}
 				}
 
-				 return true;									
+				return true;
 			}
 		}
 
@@ -98,17 +91,17 @@ namespace FTN.Services.NetworkModelService
 			return !(x == y);
 		}
 
-        public override bool Equals (object obj)
-        {
+		public override bool Equals(object obj)
+		{
 			return this == (Container)obj;
-        }
+		}
 
 		public override int GetHashCode()
 		{
 			return base.GetHashCode();
-		}				
+		}
 
-		# endregion operators
+		#endregion operators
 
 		/// <summary>
 		/// Creates entity for specified global inside the container.
@@ -119,37 +112,33 @@ namespace FTN.Services.NetworkModelService
 		{
 			short type = ModelCodeHelper.ExtractTypeFromGlobalId(globalId);
 
-			IdentifiedObject io = null;			
+			IdentifiedObject io = null;
 			switch ((DMSType)type)
 			{
-				case DMSType.BASEVOLTAGE:
-					io = new BaseVoltage(globalId);
-					break;
-
-				case DMSType.LOCATION:
-					io = new Location(globalId);
-					break;
-				case DMSType.POWERTR:
+				case DMSType.POWER_TRANSFORMER:
 					io = new PowerTransformer(globalId);
 					break;
-				case DMSType.POWERTRWINDING:
-					io = new TransformerWinding(globalId);
-					break;
-				case DMSType.WINDINGTEST:
-					io = new WindingTest(globalId);
-					break;			
 
-				default:					
+				case DMSType.POWER_TRANSFORMER_END:
+					io = new PowerTransformerEnd(globalId);
+					break;
+				case DMSType.RATIO_TAP_CHANGER:
+					io = new RatioTapChanger(globalId);
+					break;
+				case DMSType.TERMINAL:
+					io = new Terminal(globalId);
+					break;
+				default:
 					string message = String.Format("Failed to create entity because specified type ({0}) is not supported.", type);
 					CommonTrace.WriteTrace(CommonTrace.TraceError, message);
-					throw new Exception(message);					
+					throw new Exception(message);
 			}
 
-            // Add entity to map
+			// Add entity to map
 			this.AddEntity(io);
 
 			return io;
-		}		
+		}
 
 		/// <summary>
 		/// Checks if entity exists in container.
@@ -159,7 +148,7 @@ namespace FTN.Services.NetworkModelService
 		public bool EntityExists(long globalId)
 		{
 			return entities.ContainsKey(globalId);
-		}	
+		}
 
 		/// <summary>
 		/// Returns entity (identified object) on the specified index. Throws an exception if entity does not exist. 
@@ -228,6 +217,6 @@ namespace FTN.Services.NetworkModelService
 		public List<long> GetEntitiesGlobalIds()
 		{
 			return entities.Keys.ToList();
-		}			
+		}
 	}
 }

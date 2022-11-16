@@ -865,22 +865,21 @@ namespace FTN.Common
 		# region Initialization of metadata
 
 		private void InitializeTypeIdsInInsertOrder()
-		{			
-			typeIdsInInsertOrder.Add(ModelCode.BASEVOLTAGE);
-			typeIdsInInsertOrder.Add(ModelCode.LOCATION);
-			typeIdsInInsertOrder.Add(ModelCode.POWERTR);
-			typeIdsInInsertOrder.Add(ModelCode.POWERTRWINDING);
-			typeIdsInInsertOrder.Add(ModelCode.WINDINGTEST);			
-		}
+		{
+            typeIdsInInsertOrder.Add(ModelCode.POWER_TRANSFORMER);
+            typeIdsInInsertOrder.Add(ModelCode.TERMINAL);
+            typeIdsInInsertOrder.Add(ModelCode.POWER_TRANSFORMER_END);
+            typeIdsInInsertOrder.Add(ModelCode.RATIO_TAP_CHANGER);
+        }
 
 		private void InitializeNotSettablePropertyIds()
-		{			
-			notSettablePropertyIds.Add(ModelCode.IDOBJ_GID);
-			notSettablePropertyIds.Add(ModelCode.BASEVOLTAGE_CONDEQS);
-			notSettablePropertyIds.Add(ModelCode.LOCATION_PSRS);
-			notSettablePropertyIds.Add(ModelCode.POWERTRWINDING_TESTS);
-            notSettablePropertyIds.Add(ModelCode.POWERTR_WINDINGS);	
-		}
+		{
+            notSettablePropertyIds.Add(ModelCode.IDOBJ_GID);
+            notSettablePropertyIds.Add(ModelCode.TRANSFORMER_END_RADIO_TAP_CHARGER);
+            notSettablePropertyIds.Add(ModelCode.TERMINAL_TRANSFORMER_ENDS);
+            notSettablePropertyIds.Add(ModelCode.CONDUCTINGEQUIPMENT_TERMINALS);
+            notSettablePropertyIds.Add(ModelCode.POWER_TRANSFORMER_POWER_TRANSFORMER_ENDS);
+        }
 	
 		# endregion Initialization of metadata
 

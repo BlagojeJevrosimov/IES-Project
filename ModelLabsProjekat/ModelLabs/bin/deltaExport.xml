@@ -1,0 +1,84 @@
+﻿<delta id="0">
+  <operations>
+    <operation type="insert">
+      <ResourceDescriptions count="5">
+        <ResourceDescription>
+          <id gid="0x00000001ffffffff" type="POWER_TRANSFORMER" />
+          <Properties>
+            <Property id="IDOBJ_MRID" value="T1" />
+            <Property id="IDOBJ_ALIAS_NAME" value="Transfa1" />
+            <Property id="IDOBJ_NAME" value="Transformer1" />
+            <Property id="EQUIPMENT_AGGREGATE" value="1" />
+            <Property id="EQUIPMENT_NORMALLYINSERVICE" value="1" />
+            <Property id="POWER_TRANSFORMER_VECTOR_GROUP" value="Grupa1" />
+          </Properties>
+        </ResourceDescription>
+        <ResourceDescription>
+          <id gid="0x00000002ffffffff" type="TERMINAL" />
+          <Properties>
+            <Property id="IDOBJ_MRID" value="T1" />
+            <Property id="IDOBJ_ALIAS_NAME" value="Terma1" />
+            <Property id="IDOBJ_NAME" value="Terminal1" />
+            <Property id="TERMINAL_CONNECTED" value="1" />
+            <Property id="TERMINAL_PHASES" value="ABC" />
+            <Property id="TERMINAL_SEQUENCE_NUMBER" value="0" />
+            <Property id="TERMINAL_CONDUCTING_EQUIPMENT" value="0x00000001ffffffff" />
+          </Properties>
+        </ResourceDescription>
+        <ResourceDescription>
+          <id gid="0x00000002fffffffe" type="TERMINAL" />
+          <Properties>
+            <Property id="IDOBJ_MRID" value="T2" />
+            <Property id="IDOBJ_ALIAS_NAME" value="Terma2" />
+            <Property id="IDOBJ_NAME" value="Terminal2" />
+            <Property id="TERMINAL_CONNECTED" value="1" />
+            <Property id="TERMINAL_PHASES" value="ABC" />
+            <Property id="TERMINAL_SEQUENCE_NUMBER" value="0" />
+            <Property id="TERMINAL_CONDUCTING_EQUIPMENT" value="0x00000001ffffffff" />
+          </Properties>
+        </ResourceDescription>
+        <ResourceDescription>
+          <id gid="0x00000003ffffffff" type="POWER_TRANSFORMER_END" />
+          <Properties>
+            <Property id="IDOBJ_MRID" value="PTE1" />
+            <Property id="IDOBJ_ALIAS_NAME" value="PTE1Alias" />
+            <Property id="IDOBJ_NAME" value="PowerTransformerEnd1" />
+            <Property id="TRANSFORMER_END_TERMINAL" value="0x00000002fffffffe" />
+            <Property id="POWER_TRANSFORMER_END_B" value="1" />
+            <Property id="POWER_TRANSFORMER_END_B0" value="2" />
+            <Property id="POWER_TRANSFORMER_END_CONNECTION_KIND" value="D" />
+            <Property id="POWER_TRANSFORMER_END_G" value="1.4" />
+            <Property id="POWER_TRANSFORMER_END_G0" value="0.8" />
+            <Property id="POWER_TRANSFORMER_END_PHASE_ANGLE_CLOCK" value="1" />
+            <Property id="POWER_TRANSFORMER_END_R" value="0.98" />
+            <Property id="POWER_TRANSFORMER_END_R0" value="0.5" />
+            <Property id="POWER_TRANSFORMER_END_RATEDU" value="220" />
+            <Property id="POWER_TRANSFORMER_END_RATEDS" value="300" />
+            <Property id="POWER_TRANSFORMER_END_X" value="4.7" />
+            <Property id="POWER_TRANSFORMER_END_X0" value="2.4" />
+          </Properties>
+        </ResourceDescription>
+        <ResourceDescription>
+          <id gid="0x00000004ffffffff" type="RATIO_TAP_CHANGER" />
+          <Properties>
+            <Property id="IDOBJ_MRID" value="RTC1" />
+            <Property id="IDOBJ_ALIAS_NAME" value="RTC1Alias" />
+            <Property id="IDOBJ_NAME" value="RatioTapChanger1" />
+            <Property id="TAP_CHANGER_HIGH_STEP" value="4" />
+            <Property id="TAP_CHANGER_INITIAL_DELAY" value="3.1" />
+            <Property id="TAP_CHANGER_LOW_STEP" value="2" />
+            <Property id="TAP_CHANGER_LTC_FLAG" value="0" />
+            <Property id="TAP_CHANGER_NEUTRAL_STEP" value="2" />
+            <Property id="TAP_CHANGER_NEUTRAL_U" value="100" />
+            <Property id="TAP_CHANGER_NORMAL_STEP" value="1" />
+            <Property id="TAP_CHANGER_REGULATION_STATUS" value="1" />
+            <Property id="TAP_CHANGER_SUBSEQUENT_DELAY" value="4" />
+            <Property id="RATIO_TAP_CHANGER_STEP_VOLTAGE_INCREMENT" value="70" />
+            <Property id="RATIO_TAP_CHANGER_TCUL_CONTROL_MODE" value="VOLT" />
+            <Property id="TRANSFORMER_END_TERMINAL" value="0x00000003ffffffff" />
+          </Properties>
+        </ResourceDescription>
+      </ResourceDescriptions>
+    </operation>
+  </operations>
+</delta>

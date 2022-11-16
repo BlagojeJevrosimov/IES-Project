@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.IO.Pipes;
-using System.Security.Cryptography;
-using FTN.Common;
+﻿using FTN.Common;
 using FTN.Services.NetworkModelService.DataModel.Core;
+using System;
 
 namespace FTN.Services.NetworkModelService.DataModel.Wires
 {
@@ -31,7 +28,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
         {
         }
 
-        public virtual int HighStep
+        public  int HighStep
         {
             get
             {
@@ -42,7 +39,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.highStep = value;
             }
         }
-        public virtual float InitialDelay
+        public  float InitialDelay
         {
             get
             {
@@ -54,7 +51,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             }
         }
 
-        public virtual int LowStep
+        public  int LowStep
         {
             get
             {
@@ -65,7 +62,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                 this.lowStep = value;
             }
         }
-        public virtual bool LtcFlag
+        public  bool LtcFlag
         {
             get
             {
@@ -77,7 +74,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             }
         }
 
-        public virtual int NeutralStep
+        public  int NeutralStep
         {
             get
             {
@@ -89,7 +86,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             }
         }
 
-        public virtual float NeutralU
+        public  float NeutralU
         {
             get
             {
@@ -101,7 +98,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             }
         }
 
-        public virtual int NormalStep
+        public  int NormalStep
         {
             get
             {
@@ -113,7 +110,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             }
         }
 
-        public virtual bool RegulationStatus
+        public  bool RegulationStatus
         {
             get
             {
@@ -125,7 +122,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
             }
         }
 
-        public virtual float SubsequentDelay
+        public  float SubsequentDelay
         {
             get
             {
@@ -257,7 +254,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Wires
                     regulationStatus = property.AsBool();
                     break;
                 case ModelCode.TAP_CHANGER_SUBSEQUENT_DELAY:
-                    subsequentDelay= property.AsFloat();
+                    subsequentDelay = property.AsFloat();
                     break;
                 default:
                     base.SetProperty(property);

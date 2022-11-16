@@ -1,64 +1,76 @@
+﻿using FTN.Common;
 using System;
 using System.Collections.Generic;
-using System.IO.Pipes;
-using System.Security.Cryptography;
-using FTN.Common;
 
 namespace FTN.Services.NetworkModelService.DataModel.Core
 {
-    public class Terminal : IdentifiedObject {
-          
+    public class Terminal : IdentifiedObject
+    {
+
         private bool connected;
 
         private PhaseCode phases;
-        
+
         private int sequenceNumber;
 
         private long conductingEquipment = 0;
 
-        private List<long> transformerEnds;
+        private List<long> transformerEnds = new List<long>();
 
         public Terminal(long globalId) : base(globalId)
         {
         }
 
-        public  long ConductingEquipment {
-            get {
+        public long ConductingEquipment
+        {
+            get
+            {
                 return this.conductingEquipment;
             }
-            set {
+            set
+            {
                 this.conductingEquipment = value;
             }
         }
-                
-        public  bool Connected {
-            get {
+
+        public bool Connected
+        {
+            get
+            {
                 return this.connected;
             }
-            set {
+            set
+            {
                 this.connected = value;
             }
         }
-        public  PhaseCode Phases {
-            get {
+        public PhaseCode Phases
+        {
+            get
+            {
                 return this.phases;
             }
-            set {
+            set
+            {
                 this.phases = value;
             }
-        } 
-        public  int SequenceNumber {
-            get {
+        }
+        public int SequenceNumber
+        {
+            get
+            {
                 return this.sequenceNumber;
             }
-            set {
+            set
+            {
                 this.sequenceNumber = value;
             }
         }
 
-        public List<long> TransformerEnds 
-        { get => transformerEnds; 
-         set => transformerEnds = value; 
+        public List<long> TransformerEnds
+        {
+            get => transformerEnds;
+            set => transformerEnds = value;
         }
 
         public override bool Equals(object obj)
@@ -70,7 +82,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
                         x.phases == this.phases &&
                         x.connected == this.connected &&
                         x.sequenceNumber == this.sequenceNumber &&
-                        CompareHelper.CompareLists(x.TransformerEnds, this.TransformerEnds)); 
+                        CompareHelper.CompareLists(x.TransformerEnds, this.TransformerEnds));
             }
             else
             {
@@ -161,7 +173,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
                 references[ModelCode.TERMINAL_CONDUCTING_EQUIPMENT] = new List<long>();
                 references[ModelCode.TERMINAL_CONDUCTING_EQUIPMENT].Add(conductingEquipment);
             }
-            
+
             base.GetReferences(references, refType);
         }
         public override void AddReference(ModelCode referenceId, long globalId)

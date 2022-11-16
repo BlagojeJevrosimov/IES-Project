@@ -16,46 +16,12 @@ namespace FTN {
     /// A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment.
     public class TransformerEnd : IdentifiedObject {
         
-        /// Ratio tap changer associated with this transformer end.
-        private RatioTapChanger cim_RatioTapChanger;
-        
-        private const bool isRatioTapChangerMandatory = false;
-        
-        private const string _RatioTapChangerPrefix = "cim";
-        
         /// Terminal of the power transformer to which this transformer end belongs.
         private Terminal cim_Terminal;
         
         private const bool isTerminalMandatory = false;
         
         private const string _TerminalPrefix = "cim";
-        
-        public virtual RatioTapChanger RatioTapChanger {
-            get {
-                return this.cim_RatioTapChanger;
-            }
-            set {
-                this.cim_RatioTapChanger = value;
-            }
-        }
-        
-        public virtual bool RatioTapChangerHasValue {
-            get {
-                return this.cim_RatioTapChanger != null;
-            }
-        }
-        
-        public static bool IsRatioTapChangerMandatory {
-            get {
-                return isRatioTapChangerMandatory;
-            }
-        }
-        
-        public static string RatioTapChangerPrefix {
-            get {
-                return _RatioTapChangerPrefix;
-            }
-        }
         
         public virtual Terminal Terminal {
             get {
